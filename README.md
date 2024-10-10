@@ -35,11 +35,18 @@ Om EOF inte inträffar kommer den bara att köra sorterat efter linje-id <br>
 <br>
 <br>
 fyra bitar ID -> <br> 
-Integer, Operator, Set-To Operator, Boolean Operator, If Statement, NIf statement, <br>
-0000!    0001!     0010!            0011!             0100!         0101! <br>
-<br>
-Variable,   Print,    Go-To,  Numeric Separator ( '(' och ')' )   While-Loop    End-Of-File-Line <br>
-0110!       0111!,    1000!,  1001!                               1010!         1111! <br>
+Integer : 0000! <br>
+Operator : 0001! <br>
+Set-To Operator : 0010! <br>
+Boolean Operator : 0011! <br>
+If Statement : 0100! <br> 
+NIf statement : 0101! <br>
+Variable : 0110! <br>
+Print : 0111! <br>
+Go-To : 1000! <br>  
+Numeric Separator ( '(' och ')' ) : 1001! <br>
+While-Loop : 1010! <br>
+End-Of-File-Line : 1111! <br>
 <br>
 Go-To 0 ger nästa rad, döp ingen linje till 0 plz <br>
 <br>
@@ -57,24 +64,24 @@ linje-id 1111! LINJENSOMSKAVARAEOF 1000! LINJE-ID-VI-GÅR-TILL //Om linjen någo
 <br>
 Print: <br>
 linje-id 0111! VADVISKAPRINTA (integer variable/integer/...) 1000! LINJE-ID-VI-GÅR-TILL <br>
-\\
-While: \\
+<br>
+While: <br>
 linje-id 1010! VARVISKAGÅOMFALSKT 0000! VADVISKAJÄMFÖRA 0010! BOOLEAN-OPERATOR-ID VADVISKAJÄMFÖRA2 1000! LINJE-ID-VI-GÅR-TILL\\
-\\
-skriv b innan integer för att hantera som bas10,  bas10 -> bas2 \\
-skriv d innan integer för att få bas2 -> bas10 \\
-\\
-Operator: \\
-0000 -> + \\
-0001 -> - \\
-0010 -> * \\
-0011 -> / \\
-0100 -> ^ \\
-\\
-Boolean Operator: \\
-0000 -> == \\
-0001 -> > \\
-0010 -> < + \\
-0011 -> >= \\
-0100 -> <= \\
-1000 -> != \\
+<br>
+skriv b innan integer för att hantera som bas10,  bas10 -> bas2 <br>
+skriv d innan integer för att få bas2 -> bas10 <br>
+<br>
+Operator: <br>
+0000 -> + <br>
+0001 -> - <br>
+0010 -> * <br>
+0011 -> / <br>
+0100 -> ^ <br>
+<br>
+Boolean Operator: <br>
+0000 -> == <br>
+0001 -> > <br>
+0010 -> < + <br>
+0011 -> >= <br>
+0100 -> <= <br>
+1000 -> != <br>
