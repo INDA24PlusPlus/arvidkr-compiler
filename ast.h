@@ -110,7 +110,10 @@ struct AST {
         for (int i = 2; i < line.size(); i++){
             nLine.push_back(line[i]);
         }
-        if (nLine.size() == 1)assign->add_constant(nLine[0]);
+        if (nLine.size() == 1){
+            if (nLine[0].token_id == "Integer") assign->add_constant(nLine[0]);
+            else assign->add_variable(nLine[0]);
+        }
         else assign->add_arithmetic(nLine);
     }
 
