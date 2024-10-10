@@ -87,7 +87,7 @@ Boolean Operator: <br>
 0100 -> <= <br>
 1000 -> != <br>
 
-##De första 20 fibonaccitalen i BÅBÅL
+## De första 20 fibonaccitalen i BÅBÅL
 
 ```
 b1  1111! b13 1000! 0
