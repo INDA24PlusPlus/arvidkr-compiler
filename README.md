@@ -17,7 +17,8 @@
 <expression> ::= <number> | <expression> <operator> <expression>
 
 <variable> ::= <number>
-<number> ::= <letter> <digit> <number> | <digit> | <digit> <number> | <letter> <digit>
+<number> ::= <letter> <value> | <value>
+<value> ::= <digit> <value> | <digit>
 
 <whitespace> ::= " " <whitespace> | " "
 
