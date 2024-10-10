@@ -6,11 +6,9 @@ if c == 5 {
     print c
 }
 
-/*
 for i=0 -> 5 {
     d = c+i 
     print d 
 }
-*/
 
 EOF

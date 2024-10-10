@@ -27,6 +27,7 @@ vector<Token> tokenize_row(string row){
     string t = "";
     for (char c : row){
         if (c == ' '){
+            if (t == "")continue;
             whitespacesplit.push_back(t);
             t = "";
         }
@@ -69,13 +70,15 @@ vector<Token> tokenize_row(string row){
             T.index = ret.size();
         }
         else if (untokenized == "0100!"){
+            i++;
             T.token_id = "If-Statement";
-            T.value = -1;
+            T.value = stringint(whitespacesplit[i]);
             T.index = ret.size();
         }
         else if (untokenized == "0101!"){
+            i++;
             T.token_id = "NIf-Statement";
-            T.value = -1;
+            T.value = stringint(whitespacesplit[i]);
             T.index = ret.size();
         }
         else if (untokenized == "0110!"){
@@ -92,6 +95,18 @@ vector<Token> tokenize_row(string row){
         else if (untokenized == "1000!"){
             i++;
             T.token_id = "Go-To";
+            T.value = stringint(whitespacesplit[i]);
+            T.index = ret.size();
+        }
+        else if (untokenized == "1001!"){
+            i++;
+            T.token_id = "Numeric-Seperator";
+            T.value = stringint(whitespacesplit[i]);
+            T.index = ret.size();
+        }
+        else if (untokenized == "1010!"){
+            i++;
+            T.token_id = "While-Loop";
             T.value = stringint(whitespacesplit[i]);
             T.index = ret.size();
         }
@@ -115,24 +130,35 @@ vector<Token> tokenize_row(string row){
 }
 
 
-vector<Token> tokenize_file(){
-    vector<Token> ret;
+map<int, vector<Token> > tokenize_file(){
     string line;
     while (getline(cin, line)){
         vector<Token> temp = tokenize_row(line);
-        for (Token T : temp)ret.push_back(T);
+        
     }
-    return ret;
+    return M;
 }
 
 string token_to_string(Token T){
+    char operatorM[5] = {'+', '-', '*', '/', '^'};
+
     string ret = T.token_id;
     if (T.value == -1)return ret;
     ret += '(';
-    string ts = to_string(T.value);
-    for (auto c : ts){
-        ret += c;
+    if (T.token_id == "Operator"){
+        ret += operatorM[T.value];
     }
+    else if (T.token_id == "Set-Operator"){
+        ret += (T.value == 0 ? 'c' : 'b');
+        ret += '=';
+    }
+    else {
+        string ts = to_string(T.value);
+        for (auto c : ts){
+            ret += c;
+        }
+    }
+
     ret += ')';
     return ret;
 }
