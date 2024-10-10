@@ -21,8 +21,9 @@ struct AST {
         //lines -> fulla rader, while till slut, 
         //den har tagit från whiles början tills den når slut eller befinner sig utanför while
         AST* nWhile = new AST();
+        nWhile->id = "While";
         children.push_back(nWhile);
-        edgeID.push_back("Something Done");
+        edgeID.push_back("While");
         vector<Token> line1 = lines[0];
         //line1[0] är radnr, line1[1] är while, line1[2] är kanske variabel, line1[3] boolesk operation, line1[4] andra variabel/konstant, line1[5] är var den ska gå härnäst
         vector<Token> conditionLine = {line1[2], line1[3], line1[4]};
@@ -51,8 +52,10 @@ struct AST {
         AST* print = new AST();
         children.push_back(print);
         edgeID.push_back("PRINT");
+        if (T.token_id == "Variable")print->add_variable(T);
+        else if (T.token_id == "Constant")print->add_constant(T);
+        else cout << "Cannot print of type " << T.token_id << endl;
         print->id = "Print";
-        print->value = T.value;
     }
 
     void add_arithmetic(vector<Token> line){
@@ -121,10 +124,12 @@ struct AST {
         body->id = "body";
         for (int i = 0; i < lines.size(); i++){
             vector<Token> v = lines[i];
+            cout << "at row: " << v[0].value << endl;
             if (v[1].token_id == "While-Loop"){
-                vector<vector<Token> > templines;
+                vector<vector<Token> > templines = {v};
                 i++;
                 for (; lines[i][0].value != v[1].value; i++)templines.push_back(lines[i]);
+                i--;
                 body->add_while(templines);
             }
             else if (v[1].token_id == "Variable"){
@@ -140,10 +145,15 @@ struct AST {
                 }
             }
             else if (v[1].token_id == "NIf-Statement"){
-                vector<vector<Token> > templines;
+                vector<vector<Token> > templines = {v};
                 i++;
                 for (; lines[i][0].value != v[1].value; i++)templines.push_back(lines[i]);
+                i--;
                 body->add_nif(templines);
+            }
+            else if (v[1].token_id == "Print"){
+                Token T = v[2];
+                body->add_print(T);
             }
         }
     }
