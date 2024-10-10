@@ -1,4 +1,5 @@
 # BÅBÅL
+Bättre än COBOL iallafall
 ## BNF
 ```<program> ::= <line> | <line> "\n" <program>
 <line> ::= <lineid> <whitespace> <eofdef> <whitespace> <goto> | <lineid> <whitespace> <assignment> <whitespace> <goto> | <lineid> <whitespace> <loop> <whitespace> <goto> | <lineid> <whitespace> <if> <whitespace> <goto> | <lineid> <whitespace> <nif> <whitespace> <goto> | <lineid> <whitespace> <output> <whitespace> <goto>
