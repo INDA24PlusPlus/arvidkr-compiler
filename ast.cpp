@@ -17,7 +17,7 @@ void create_ast(){
     code = tokenize_file();
     Program.id = "Program";
 
-    vector<bool> isVisited(false, 200001);
+    bool isVisited[200001];
     int currLine = 1;
 
     int endingLine = 0;
@@ -28,6 +28,7 @@ void create_ast(){
         if (currLine == endingLine){
             break;
         }
+        isVisited[currLine] = true;
         cout << currLine << endl;
 
         vector<Token> v = code[currLine];
@@ -37,6 +38,9 @@ void create_ast(){
             program.push_back(v);
         }
         if (v[v.size()-1].value == 0)currLine++;
+        else if (isVisited[v[v.size()-1].value]){
+            currLine++;
+        }
         else currLine = v[v.size()-1].value;
 
     }
