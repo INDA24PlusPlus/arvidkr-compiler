@@ -44,7 +44,7 @@ If Statement : 0100! <br>
 NIf statement : 0101! <br>
 Variable : 0110! <br>
 Print : 0111! <br>
-Go-To : 1000! <br>  
+Go-To : 1000! <br>
 Numeric Separator ( '(' och ')' ) : 1001! <br>
 While-Loop : 1010! <br>
 End-Of-File-Line : 1111! <br>
