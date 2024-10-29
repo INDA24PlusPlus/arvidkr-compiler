@@ -40,6 +40,7 @@ struct AST {
         AST* nIf = new AST();
         children.push_back(nIf);
         edgeID.push_back("Something Done");
+        nIf->id = "Nif";
         vector<Token> line1 = lines[0];
         //line1[0] är radnr, line1[1] är while, line1[2] är kanske variabel, line1[3] boolesk operation, line1[4] andra variabel/konstant, line1[5] är var den ska gå härnäst
         vector<Token> conditionLine = {line1[2], line1[3], line1[4]};

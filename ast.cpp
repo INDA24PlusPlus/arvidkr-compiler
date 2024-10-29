@@ -73,8 +73,16 @@ void traverse(AST* curr, set<char>& declared_variables, int indent_flag, bool en
         cout << " " << id << " ";
         traverse(curr->children[1], declared_variables, 0, 0);
         if (endline_flag)cout << ";" << endl;
+    } 
+    else if (id == "Nif"){
+        for (int i = 0; i < indent_flag; i++)cout << "    ";
+        cout << "if(";
+        traverse(curr->children[0], declared_variables, 0, 0);
+        cout << "){" << endl;
+        traverse(curr->children[1], declared_variables, indent_flag+1, 1);
+        for (int i = 0; i < indent_flag; i++)cout << "    ";
+        cout << "}" << endl;
     }
-
 
 }
 
