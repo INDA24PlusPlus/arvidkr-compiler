@@ -1,1 +1,9 @@
 .vscode
+main
+lex
+ast
+code
+code-output.txt
+parser-output.txt
+ast-output.txt
+code.c

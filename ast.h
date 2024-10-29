@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <set>
 #include <map>
 #include <cmath>
 #include "lexer.h"
@@ -213,8 +214,10 @@ struct AST {
 };
 
 
-void dfs(AST* start);
-void create_ast();
+void dfs(AST* start, vector<pair<string, int>>& in_order_list);
+void traverse(AST* curr, set<char>& declared_variables, int indent_flag, bool endline_flag);
+void transpile_c(AST& Program, vector<pair<string, int> > in_order_list);
+void create_ast(bool wants_to_compile, bool wants_to_run);
 
 
 
